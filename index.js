@@ -72,16 +72,35 @@ export const getFirstTwoArgs = (a, b, ...rest) => {
 //    return a NEW object, do not modify the object passed in to the function
 //    use spread operator to create a new object
 
-export const addSneakerCount = () => {}
+export const addSneakerCount = (existingObject) => {
+  let sneakerCount = existingObject.shoes.length
+  return {
+    ...existingObject,
+    sneakerCount,
+  }
+}
 
 // INPUT: brands from data.js
 // OUTPUT: the brand names listed
 // REQS: use Object.keys to solve
-export const getBrandNames = () => {}
+import { brands } from './data.js'
+export const getBrandNames = (brands) => {
+  return (Object.keys(brands))
+}
 
 // INPUT: brands from data.js
 // OUTPUT: total number of sneaker types across all brands (14)
-export const totalSneakerCount = () => {}
+export const totalSneakerCount = (brands) => {
+  const theBrands = Object.keys(brands)
+  // console.log(theBrands);
+  let totalcount = 0
+  for (let brand of theBrands){
+    // console.log(brands[brand])
+    totalcount += brands[brand].shoes.length
+  }
+  return totalcount;
+  // return (brands.shoes.length);
+}
 
 // INPUT: An object
 // OUTPUT: An array with key value pairs converted to arrays
